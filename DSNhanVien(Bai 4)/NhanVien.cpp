@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cctype>
 #include "NhanVien.h"
 using namespace std;
 

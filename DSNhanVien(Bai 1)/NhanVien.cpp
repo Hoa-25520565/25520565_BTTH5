@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <limits>
+#include <cctype>
 #include "NhanVien.h"
 using namespace std;
 
@@ -46,20 +47,28 @@ bool HopLe(int d, int m, int y) {
 }
 
 /*
-	Hàm kiểm tra định dạng ngày tháng năm sinh
+	Hàm kiểm tra định dạng và tính hợp lệ của ngày tháng năm
 	Input: Chuỗi ngày dạng dd/mm/yyyy
-	Output: true nếu hợp lệ, ngược lại false
+	Output: True nếu ngày hợp lệ, false nếu ngày không hợp lệ hoặc sai định dạng
 	Hướng giải thuật:
+	- Kiểm tra độ dài chuỗi phải đúng 10 ký tự
+	- Kiểm tra vị trí dấu '/' phải nằm ở index 2 và 5
 	- Dùng stringstream để tách ngày, tháng, năm
-	- Kiểm tra định dạng dấu '/'
+	- Kiểm tra không còn ký tự dư sau khi tách dữ liệu
 	- Gọi hàm HopLe để kiểm tra tính hợp lệ của ngày tháng năm
 */
 bool KiemTraNgay(string s) {
+	if (s.length() != 10)
+		return false;
+	if (s[2] != '/' || s[5] != '/')
+		return false;
 	int d, m, y;
 	char c1, c2;
 	stringstream ss(s);
 	ss >> d >> c1 >> m >> c2 >> y;
 	if (ss.fail() || c1 != '/' || c2 != '/')
+		return false;
+	if (!ss.eof())
 		return false;
 	return HopLe(d, m, y);
 }

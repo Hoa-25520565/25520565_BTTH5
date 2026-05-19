@@ -115,7 +115,7 @@ void DSNhanVien::TimNVSXLuongThapNhat() {
 	if (n == 0) cout << "Danh sach rong\n";
 	else {
 		int min = -1;
-		for (int i = 1;i < n;i++) {
+		for (int i = 0;i < n;i++) {
 			if (!dynamic_cast<NhanVienSX*>(ds[i])) continue;
 			if (min == -1) {
 				min = i;

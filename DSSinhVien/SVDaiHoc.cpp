@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cctype>
 #include "SVDaiHoc.h"
 using namespace std;
 
